@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #212529;
+        }
+        a{
+            color: white;
+            text-decoration-line: none;
+            padding-right:2000px ;
+        }
+        h3{
+            color: rgb(229, 255, 0);
+            text-align: center;
+        }
+        .navbar{
+            height: 10%;
+        }
+        .row{
+            margin-top: 150px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        p{
+            color: rgb(255, 251, 0);
+            text-align: center;
+            font-size: 20px;
+        }
+        h5{
+            color: white;
+            text-align: center;
+        }
+        .row-2{
+            padding: 10px;
+            font-size: 25px;
+            
+        }
+        select {
+            display: inline-block;
+           padding-left: 120px;
+           margin-left: 1050px;
+        }
+        table{
+            width: 80%;
+            color: white;
+            margin-left: 10px;
+           margin-right: 10px;
+        }
+        th{
+            color: white;
+        }
+        a:hover{
+            color: yellow;
+        }
+        .col{
+            margin-top: 150px;
+            
+        }
+        button[type=submit]{
+            width: 500px;
+            height: 45px;
+            margin: auto;
+            border-radius: 11px;
+            background-color: #e2e2e2;
+            color: rgb(0, 0, 0);
+        }
+        button[type=submit]:hover {
+    background-color: yellow;
+    border-radius: 11px;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <ion-icon name="home-outline"></ion-icon><a href="/dashboard/dashboard">Home</a>
+           <h3> Played </h3>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Settings</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/bets/bets">My bets</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/finance/finance">Finance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/transaction/transaction">Transactions</a>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Details
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="/results/results">Results</a></li>
+                    <li><a class="dropdown-item" href="/live/live">Live score</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/statistics/statistics">Statistics</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/reset/reset">Change password</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/transaction/logout">Log out</a>
+                  </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+           
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+
+      
+      <div  class="col bg-dark"> 
+        <a style="display: inline-block; padding: 0px; margin: 10px;" href="/">Transactions</a>
+        <a style="display: inline-block; padding: 0px; margin: 10px;"href="/">Played Bets</a>
+        <a style="display: inline-block; padding: 0px; margin: 10px;" href="/">Winning</a>
+      
+      <div  style="margin-top: auto;" class="row bg-dark">
+        <p>Select date</p>
+        <div class="col">
+          <input type="date" class="form-control" placeholder="From date" aria-label="From date">
+        </div>
+        <div class="col">
+          <input type="date" class="form-control" placeholder="To date " aria-label="To date">
+        </div>
+      <div class="row bg-dark"> 
+      <button type="submit"> Show</button>
+      </div>
+    </div>
+    <div class="table-responsive " id="table" >
+                                
+        <table class="table " id="section" >
+            <thead >
+                <tr class="header " id="myTable" style="color: #f7f7f7;">
+                    <th style="width: 5%;">Nr</th>
+                    <th>Date</th>
+                    <th>Company</th>
+                    <th >Currency</th>
+                    <th >Amount</th>
+                </tr>
+            </thead>
+            <tbody >
+              
+            </tbody>
+        </table>
+</div>
+</div>
+
+
+
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
