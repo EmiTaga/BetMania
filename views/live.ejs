@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>In-Play Matches</title>
+  <style>
+    /* Your CSS styles here */
+  </style>
+</head>
+<body>
+  <h1>In-Play Matches</h1>
+
+  <% if (feed) { %>
+    <ul>
+      <% feed.Match.forEach(function (match) { %>
+        <li>
+          <h2><%= match.Name._text %></h2>
+          <p>Sport: <%= match.Sport._text %></p>
+          <p>Start Time: <%= match.StartTime._text %></p>
+          <p>Status: <%= match.Status._text %></p>
+          <!-- Add more details as needed -->
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No in-play matches available.</p>
+  <% } %>
+</body>
+</html>

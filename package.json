@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "start": "node app.js"
+    "start": "node app.js"
   },
   "author": "Emine Taga",
   "license": "ISC",
@@ -17,10 +17,15 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "fast-xml-parser": "^4.2.4",
+    "he": "^1.2.0",
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.3.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "ws": "^8.13.0",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.6.0"
   }
 }

@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>List of sports:</h1>
-    <pre><%= prematchJson %></pre>
+    <h1>Pre-Match Matches</h1>
+    <% if (matches.length > 0) { %>
+      <% matches.forEach(function(match) { %>
+        <h2>Match ID: <%= match.Id %></h2>
+        <p>Match Name: <%= match.Name %></p>
+        <!-- Display other match information as needed -->
+      <% }); %>
+    <% } else { %>
+      <p>No matches available</p>
+    <% } %>
 </body>
 </html>
