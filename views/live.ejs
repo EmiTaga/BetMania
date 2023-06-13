@@ -1,28 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>In-Play Matches</title>
+  <title>Live Data</title>
   <style>
-    /* Your CSS styles here */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
   </style>
 </head>
 <body>
-  <h1>In-Play Matches</h1>
+  <% if (receivedData) { %>
+    <h1>Received Data:</h1>
 
-  <% if (feed) { %>
-    <ul>
-      <% feed.Match.forEach(function (match) { %>
-        <li>
-          <h2><%= match.Name._text %></h2>
-          <p>Sport: <%= match.Sport._text %></p>
-          <p>Start Time: <%= match.StartTime._text %></p>
-          <p>Status: <%= match.Status._text %></p>
-          <!-- Add more details as needed -->
-        </li>
-      <% }); %>
-    </ul>
+    <% if (receivedData.messageBody && receivedData.messageBody.Events) { %>
+      <h2>Message Body:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Event FixtureId</th>
+            <th>Market Id</th>
+            <th>Provider Id</th>
+            <th>Provider Name</th>
+            <th>Provider LastUpdate</th>
+            <th>Bet Id</th>
+            <th>Bet Name</th>
+            <th>Bet Status</th>
+            <th>Bet StartPrice</th>
+            <th>Bet Price</th>
+            <th>Bet LastUpdate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let event of receivedData.messageBody.Events.Event) { %>
+            <% for (let market of event.Markets.Market) { %>
+              <% for (let provider of market.Provider) { %>
+                <% for (let bet of provider.Bet) { %>
+                  <tr>
+                    <td><%= event.$.FixtureId %></td>
+                    <td><%= market.$.Id %></td>
+                    <td><%= provider.$.Id %></td>
+                    <td><%= provider.$.Name %></td>
+                    <td><%= provider.$.LastUpdate %></td>
+                    <td><%= bet.$.Id %></td>
+                    <td><%= bet.$.Name %></td>
+                    <td><%= bet.$.Status %></td>
+                    <td><%= bet.$.StartPrice %></td>
+                    <td><%= bet.$.Price %></td>
+                    <td><%= bet.$.LastUpdate %></td>
+                  </tr>
+                <% } %>
+              <% } %>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h2>No events found.</h2>
+    <% } %>
+
   <% } else { %>
-    <p>No in-play matches available.</p>
+    <h1>No data received.</h1>
   <% } %>
 </body>
 </html>

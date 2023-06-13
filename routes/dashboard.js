@@ -2,27 +2,38 @@ let express = require('express');
 let router = express.Router();
 let db=require('../database');
 const amqp = require('amqplib');
-router.get('/dashboard', function(req, res, next) {
-  let userId = req.session.user_id; // get user ID from session
-  let sql2 = "SELECT * FROM bet.account WHERE id = " + userId;
-  let sql3 = "SELECT balance FROM bet.balance WHERE  id = " + userId;
-  db.query(sql2, function (err, userData) {
-    if (err) throw err;
-    console.log(userId);
-    db.query(sql3, function (err, amountData) {
-      if (err) throw err;
-      res.render('dashboard', {
-        title: 'Transactions List',
-        userData: userData[0],
-        amountData: amountData[0] // assuming the SQL query returns only one row
+const axios = require('axios');
+const convert = require('xml-js');
+router.get('/dashboard', async (req, res, next) => {
+  try {
+    const userId = req.session.user_id; // get user ID from session
+
+    // Query 1: Fetch user data
+    const sql2 = "SELECT * FROM bet.account WHERE id = " + userId;
+    const userData = await new Promise((resolve, reject) => {
+      db.query(sql2, function (err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data[0]);
+        }
       });
     });
-  });
-});
-router.get('/dashboard', async (req, res) => {
-  try {
+
+    // Query 2: Fetch amount data
+    const sql3 = "SELECT balance FROM bet.balance WHERE  id = " + userId;
+    const amountData = await new Promise((resolve, reject) => {
+      db.query(sql3, function (err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data[0]);
+        }
+      });
+    });
+
     // Make a request to the odds API
-    const response = await axios.get('https://prematch.lsports.eu/OddService/GetLeagues?username=eminetaga6%40gmail.com&password=Kdu2e%40d84Er&guid=3028f33b-e729-4dd3-81bf-1c198ef22af7');
+    const response = await axios.get('https://prematch.lsports.eu/OddService/GetEvents?username=eminetaga6%40gmail.com&password=%20Kdu2e%40d84Er&guid=3028f33b-e729-4dd3-81bf-1c198ef22af7&sports=Football&leagues=%20Soccer%20Soccer%20League%20(MLS)&markets=1%2C2%2C3%2C4%2C5%2C6%2C7');
 
     // Extract the XML data from the response
     const xmlData = response.data;
@@ -37,19 +48,28 @@ router.get('/dashboard', async (req, res) => {
     // Extract the relevant information from the parsed XML
     const feed = parsedData.Feed;
 
-    // Log the extracted feed data for debugging
-    console.log('Feed Data:', feed);
-
-    // Render the football.ejs template with the feed data
-    res.render('football', { feed });
+    // Render the dashboard.ejs template with the data
+    res.render('dashboard', {
+      title: 'Transactions List',
+      userData: userData,
+      amountData: amountData,
+      feed: feed // Include the feed data in the rendered template
+    });
   } catch (error) {
     // Log the error for debugging
     console.error('Error:', error);
 
     // Render an error view or send an error response
-    res.status(500).render('error', { error: 'Internal Server Error' });
+    res.status(500).render('error', {
+      error: 'Internal Server Error',
+      message: 'An error occurred' // Add the message variable with an appropriate value
+    });
   }
 });
+
+
+
+
 router.get('/logout', function(req, res) {
   // destroy the user's session to log them out
   req.session.destroy(function(err) { 

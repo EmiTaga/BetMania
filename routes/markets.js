@@ -7,7 +7,7 @@ const amqp = require('amqplib');
 router.get('/markets', async (req, res) => {
     try {
       // Make a request to the odds API
-      const response = await axios.get('https://prematch.lsports.eu/OddService/GetMarkets?username=eminetaga6%40gmail.com&password=Kdu2e%40d84Er&guid=3028f33b-e729-4dd3-81bf-1c198ef22af7');
+      const response = await axios.get('https://prematch.lsports.eu/OddService/GetLeagues?username=eminetaga6%40gmail.com&password=Kdu2e%40d84Er&guid=3028f33b-e729-4dd3-81bf-1c198ef22af7');
   
       // Log the API response for debugging
       console.log(response.data);

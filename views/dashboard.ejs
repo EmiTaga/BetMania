@@ -186,11 +186,275 @@ body{
           </button>
         </h2>
         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-          <div class="accordion-body bg-dark">
-
+          <div class="accordion-body bg-dark" style="color: antiquewhite;">
+            <div class="accordion accordion-flush" id="nestedAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseOne" aria-expanded="true" aria-controls="nestedCollapseOne">
+                    Soccer Soccer League (MLS)
+                  </button>
+                </h2>
+                <div id="nestedCollapseOne" class="accordion-collapse collapse show" aria-labelledby="nestedHeadingOne" data-bs-parent="#nestedAccordion">
+                  <div style="color: white;" class="accordion-body bg-dark">
+                    <% if (feed && feed.Body && feed.Body.Event) { %>
+                      <% feed.Body.Event.forEach(function(event) { %>
+                          <h2>Event Details</h2>
+                          <% console.log('Event:', event); %> 
+                          <table style="color: white;">
+                              <tr>
+                                  <th>Fixture ID</th>
+                                  <th>Last Update</th>
+                                  <th>Sport ID</th>
+                                  <th>Sport Name</th>
+                                  <th>Location ID</th>
+                                  <th>Location Name</th>
+                                  <th>League ID</th>
+                                  <th>League Name</th>
+                                  <th>Start Date</th>
+                                  <th>Status</th>
+                              </tr>
+                              <tr>
+                                  <td><%= event.Fixture._attributes.FixtureId %></td>
+                                  <td><%= event.Fixture._attributes.LastUpdate %></td>
+                                  <td><%= event.Fixture.Sport._attributes.Id %></td>
+                                  <td><%= event.Fixture.Sport._attributes.Name %></td>
+                                  <td><%= event.Fixture.Location._attributes.Id %></td>
+                                  <td><%= event.Fixture.Location._attributes.Name %></td>
+                                  <td><%= event.Fixture.League._attributes.Id %></td>
+                                  <td><%= event.Fixture.League._attributes.Name %></td>
+                                  <td><%= event.Fixture.StartDate._text %></td>
+                                  <td><%= event.Fixture.Status._text %></td>
+                              </tr>
+                          </table>
+                          <pre>
+                          
+                          </pre>
+                          <% if (event.Fixture && event.Fixture.Participants && event.Fixture.Participants.Participant) { %>
+                              <h2>Participants</h2>
+                              <ul>
+                                  <% if (Array.isArray(event.Fixture.Participants.Participant)) { %>
+                                      <% event.Fixture.Participants.Participant.forEach(function(participant) { %>
+                                          <li><%= participant._attributes.Name %></li>
+                                      <% }); %>
+                                  <% } else { %>
+                                      <li><%= event.Fixture.Participants.Participant._attributes.Name %></li>
+                                  <% } %>
+                              </ul>
+                          <% } %>
+                          
+                  
+                          <% if (event.Markets && event.Markets.Market) { %>
+                              <h2>Markets</h2>
+                              <ul>
+                                  <% if (Array.isArray(event.Markets.Market)) { %>
+                                      <% event.Markets.Market.forEach(function(market) { %>
+                                          <li><%= market._attributes.Name %></li>
+                                      <% }); %>
+                                  <% } else { %>
+                                      <li><%= event.Markets.Market._attributes.Name %></li>
+                                  <% } %>
+                              </ul>
+                          <% } %>
+                          <% if (event.Livescore && event.Livescore.Scoreboard && event.Livescore.Scoreboard._attributes && event.Livescore.Periods) { %>
+                              <h2>Livescore</h2>
+                              <table>
+                                  <tr>
+                                      <th>Status</th>
+                                      <th>Current Period</th>
+                                      <th>Time</th>
+                                  </tr>
+                                  <tr>
+                                      <td><%= event.Livescore.Scoreboard._attributes.Status %></td>
+                                      <td><%= event.Livescore.Scoreboard._attributes.CurrentPeriod %></td>
+                                      <td><%= event.Livescore.Scoreboard._attributes.Time %></td>
+                                  </tr>
+                              </table>
+              
+                              <% if (Array.isArray(event.Livescore.Periods.Period)) { %>
+                                  <% event.Livescore.Periods.Period.forEach(function(period) { %>
+                                      <h3>Period Details</h3>
+                                      <table>
+                                          <tr>
+                                              <th>Type</th>
+                                              <th>Home Team Score</th>
+                                              <th>Away Team Score</th>
+                                              <th>Sequence Number</th>
+                                          </tr>
+                                          <tr>
+                                              <td><%= period._attributes.Type %></td>
+                                              <td><%= period._attributes.HomeTeamScore %></td>
+                                              <td><%= period._attributes.AwayTeamScore %></td>
+                                              <td><%= period._attributes.SequenceNumber %></td>
+                                          </tr>
+                                      </table>
+                                  <% }); %>
+                              <% } else if (event.Livescore.Periods.Period) { %>
+                                  <% const period = event.Livescore.Periods.Period; %>
+                                  <h3>Period Details</h3>
+                                  <table>
+                                      <tr>
+                                          <th>Type</th>
+                                          <th>Home Team Score</th>
+                                          <th>Away Team Score</th>
+                                          <th>Sequence Number</th>
+                                      </tr>
+                                      <tr>
+                                          <td><%= period._attributes.Type %></td>
+                                          <td><%= period._attributes.HomeTeamScore %></td>
+                                          <td><%= period._attributes.AwayTeamScore %></td>
+                                          <td><%= period._attributes.SequenceNumber %></td>
+                                      </tr>
+                                  </table>
+                              <% } %>
+                          <% } %>
+              
+                          <% if (event.Statistics && event.Statistics.Statistic) { %>
+                              <h2>Statistics</h2>
+                              <table>
+                                  <tr>
+                                      <th>Type</th>
+                                      <th>Home Team</th>
+                                      <th>Away Team</th>
+                                  </tr>
+                                  <% event.Statistics.Statistic.forEach(function(statistic) { %>
+                                      <tr>
+                                          <td><%= statistic._attributes.Type %></td>
+                                          <td><%= statistic.Home %></td>
+                                          <td><%= statistic.Away %></td>
+                                      </tr>
+                                  <% }); %>
+                              </table>
+                          <% } %>
+              
+                         
+              
+                      <% }); %>
+                  <% } %>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Primeira Liga Portugali
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Hollandë Eredivisie
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Superliga e Argjentinës
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Brasileirao
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Ligue 1
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Seria A
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Bundesliga
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    La Liga
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#nestedCollapseTwo" aria-expanded="false" aria-controls="nestedCollapseTwo">
+                    Premier League
+                  </button>
+                </h2>
+                <div id="nestedCollapseTwo" class="accordion-collapse collapse" aria-labelledby="nestedHeadingTwo" data-bs-parent="#nestedAccordion">
+                  <div class="accordion-body bg-dark">
+                    Content for Accordion Item 2
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
             </div>
         </div>
       </div>
+    
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button style="color: white;" class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">

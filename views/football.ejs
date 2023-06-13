@@ -58,7 +58,35 @@
                     <td><%= event.Fixture.Status._text %></td>
                 </tr>
             </table>
-
+            <pre>
+            
+            </pre>
+            <% if (event.Fixture && event.Fixture.Participants && event.Fixture.Participants.Participant) { %>
+                <h2>Participants</h2>
+                <ul>
+                    <% if (Array.isArray(event.Fixture.Participants.Participant)) { %>
+                        <% event.Fixture.Participants.Participant.forEach(function(participant) { %>
+                            <li><%= participant._attributes.Name %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li><%= event.Fixture.Participants.Participant._attributes.Name %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+            
+    
+            <% if (event.Markets && event.Markets.Market) { %>
+                <h2>Markets</h2>
+                <ul>
+                    <% if (Array.isArray(event.Markets.Market)) { %>
+                        <% event.Markets.Market.forEach(function(market) { %>
+                            <li><%= market._attributes.Name %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li><%= event.Markets.Market._attributes.Name %></li>
+                    <% } %>
+                </ul>
+            <% } %>
             <% if (event.Livescore && event.Livescore.Scoreboard && event.Livescore.Scoreboard._attributes && event.Livescore.Periods) { %>
                 <h2>Livescore</h2>
                 <table>
