@@ -21,7 +21,7 @@ router.get('/dashboard', async (req, res, next) => {
     });
 
     // Query 2: Fetch amount data
-    const sql3 = "SELECT balance FROM bet.balance WHERE  id = " + userId;
+    const sql3 = "SELECT balance FROM bet.balance WHERE id = " + userId;
     const amountData = await new Promise((resolve, reject) => {
       db.query(sql3, function (err, data) {
         if (err) {
@@ -47,13 +47,36 @@ router.get('/dashboard', async (req, res, next) => {
 
     // Extract the relevant information from the parsed XML
     const feed = parsedData.Feed;
+    const events = feed.Body.Event || []; // Access the 'Event' array correctly
 
-    // Render the dashboard.ejs template with the data
+    // Filter events based on LeagueId equal to 4 or 16814
+    const filteredEvents = events.filter(
+      event =>
+        event.Fixture.League._attributes.Id === '16814' ||
+        event.Fixture.League._attributes.Id === '34308'||
+        event.Fixture.League._attributes.Id === '2944' ||
+        event.Fixture.League._attributes.Id === '28575' ||
+        event.Fixture.League._attributes.Id === '29649' ||
+        event.Fixture.League._attributes.Id === '27363' ||
+        event.Fixture.League._attributes.Id === '37606' ||
+        event.Fixture.League._attributes.Id === '37615' ||
+        event.Fixture.League._attributes.Id === '524'
+    );
+
+    // Log the filtered events for debugging
+    console.log('Filtered Events:', filteredEvents);
+
+    // Render the dashboard.ejs template with the filtered data
     res.render('dashboard', {
       title: 'Transactions List',
       userData: userData,
       amountData: amountData,
-      feed: feed // Include the feed data in the rendered template
+      feed: {
+        ...feed,
+        Body: {
+          Event: filteredEvents
+        }
+      }
     });
   } catch (error) {
     // Log the error for debugging
@@ -66,6 +89,7 @@ router.get('/dashboard', async (req, res, next) => {
     });
   }
 });
+
 
 
 
