@@ -1,0 +1,16 @@
+Markets 
+
+<Market Id="1566" Name="Match Time Result" />
+<Market Id="306" Name="First Goal Last Goal" />
+<Market Id="2" Name="Under/Over" />
+<Market Id="7" Name="Double Chance" />
+<Market Id="128" Name="Number of Goals" />
+<Market Id="56" Name="Last Team To Score" />
+<Market Id="56" Name="Last Team To Score" />
+<Market Id="3" Name="Asian Handicap" />
+<Market Id="5" Name="Odd/Even" />
+<Market Id="2632" Name="No Runner No Bet" />
+<Market Id="59" Name="Next Goal" />
+<Market Id="6" Name="Correct Score" />
+
+

@@ -1,0 +1,110 @@
+Leagues 
+
+
+UEFA (International)
+Serie A (Italy)
+Serie B (Italy)
+Jupiler League (Belgium)
+Ligue 1 (France)
+Bundesliga (Germany)
+Premier League (England)
+League One (England)
+Coppa Italia (Italy)
+Copa del Rey (Spain)
+Cup (Belgium)
+Coupe de France (France)
+Taca de Liga (Portugal)
+Super Cup (Belgium)
+Super Cup (Germany)
+Community Shield (England)
+Copa Libertadores - Group 9 (International)
+Super Cup (Netherlands)
+FA Trophy (England)
+UEFA Super Cup (International)
+Eredivisie (Netherlands)
+Copa Argentina (Argentina)
+Supercopa (Spain)
+Supercoppa Italiana (Italy)
+Superliga (Albania)
+Primeira Liga (Portugal)
+LaLiga (Spain)
+Hybrid Friendlies (International)
+Club Friendlies (International)
+DFB Pokal (Germany)
+Série A (Brazil)
+EFL Cup (England)
+CONCACAF Gold Cup (International)
+Audi Cup (International)
+CONCACAF League (International)
+Superliga (Argentina)
+UEFA Nations League (International)
+Super Cup (Portugal)
+England FA Cup (England)
+FIFA Club World Cup (International)
+UEFA Europa League (International)
+FIFA World Cup 2022 (International)
+UEFA Champions League (International)
+Supercopa do Brasil (Brazil)
+Copa America (International)
+Euro 2024 (International)
+Cup (Albania)
+Finalissima (International)
+Fifa World Cup 2026 (International)
+UEFA Euro 2024 Qualifiers (International)
+UEFA Champions League 2023/24 (International)
+
+
+
+
+League id 
+
+4
+8
+59
+61
+65
+67
+68
+97
+123
+135
+147
+210
+270
+271
+279
+348
+438
+2739
+2901
+2944
+3316
+3768
+3779
+3878
+6603
+8363
+13967
+14493
+15179
+20913
+21833
+22204
+22411
+22610
+22736
+26283
+26379
+26849
+28206
+30444
+31004
+32644
+36412
+38737
+38745
+43610
+56889
+64431
+64900
+68706

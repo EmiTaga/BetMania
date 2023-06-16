@@ -58,6 +58,16 @@ router.get('/live', function(req, res) {
             console.log("Contents of MessageBody:");
             console.log(messageBody);
           }
+          console.log("Header:");
+if (msg.properties.headers) {
+  Object.keys(msg.properties.headers).forEach(key => {
+    console.log(key + ":");
+    console.log(msg.properties.headers[key]);
+  });
+} else {
+  console.log("No headers found");
+}
+
         });
       }, {
         noAck: true

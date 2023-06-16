@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+      
+        th, td {
+          padding: 8px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+      
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+      
+        .market-info {
+          list-style: none;
+        }
+      
+        .market-info li {
+          margin-bottom: 4px;
+        }
+      
+        .market-info li strong {
+          display: block;
+        }
+      </style>
+      
+</head>
+<body>
+    <div>
+        <% if (feed && feed.Body && feed.Body.Event) { %>
+          <table>
+            <tr>
+              <th>Last Update</th>
+              <th>Sport Name</th>
+              <th>Location Name</th>
+              <th>League ID</th>
+              <th>League Name</th>
+              <th>Start Date</th>
+              <th>Status</th>
+              <th>Participants</th>
+            </tr>
+            <% feed.Body.Event.forEach(function(event) { %>
+              <tr>
+                <td><%= event.Fixture._attributes.LastUpdate %></td>
+                <td><%= event.Fixture.Sport._attributes.Name %></td>
+                <td><%= event.Fixture.Location._attributes.Name %></td>
+                <td><%= event.Fixture.League._attributes.Id %></td>
+                <td><%= event.Fixture.League._attributes.Name %></td>
+                <td><%= event.Fixture.StartDate._text %></td>
+                <td><%= event.Fixture.Status._text %></td>
+                <td>
+                  <% if (event.Fixture.Participants && event.Fixture.Participants.Participant) { %>
+                    <ul>
+                      <% if (Array.isArray(event.Fixture.Participants.Participant)) { %>
+                        <% event.Fixture.Participants.Participant.forEach(function(participant) { %>
+                          <li><%= participant._attributes.Name %></li>
+                        <% }); %>
+                      <% } else { %>
+                        <li><%= event.Fixture.Participants.Participant._attributes.Name %></li>
+                      <% } %>
+                    </ul>
+                  <% } %>
+                </td>
+              </tr>
+              <% if (event.Markets && event.Markets.Market) { %>
+                <tr>
+                  <td colspan="8">
+                    <table class="market-table">
+                      <tr>
+                        <th>Market Name</th>
+                        <th>Start Price</th>
+                        <th>Price</th>
+                      </tr>
+                      <% if (Array.isArray(event.Markets.Market)) { %>
+                        <% event.Markets.Market.forEach(function(market) { %>
+                          <tr>
+                            <td><%= market._attributes.Name %></td>
+                            <td><%= market._attributes.StartPrice %></td>
+                            <td><%= market._attributes.Price %></td>
+                          </tr>
+                        <% }); %>
+                      <% } else { %>
+                        <tr>
+                          <td><%= event.Markets.Market._attributes.Name %></td>
+                          <td><%= event.Markets.Market._attributes.StartPrice %></td>
+                          <td><%= event.Markets.Market._attributes.Price %></td>
+                        </tr>
+                      <% } %>
+                    </table>
+                  </td>
+                </tr>
+              <% } %>
+            <% }); %>
+          </table>
+        <% } %>
+      </div>
+      
+      
+</body>
+</html>
