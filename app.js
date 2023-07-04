@@ -24,6 +24,7 @@ let prematchRouter = require('./routes/prematch');
 let rabbitmqRouter = require('./routes/rabbitmq')
 let resetRouter = require('./routes/reset');
 let todayRouter = require('./routes/today')
+let bettingRouter = require('./routes/betting')
 let app = express();
 app.use(express.static('public'));
 app.get('/', (req, res, next) => {
@@ -68,6 +69,7 @@ app.use('/prematch',prematchRouter);
 app.use('/rabbitmq',rabbitmqRouter);
 app.use('/reset',resetRouter);
 app.use('/today',todayRouter);
+app.use('/betting',bettingRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
