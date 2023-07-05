@@ -207,349 +207,271 @@ table {
             </li>
         </ul>
      </div>
-      <div class="accordion bg-dark" id="accordionPanelsStayOpenExample">
-        <div class="accordion-item  bg-dark">
+     <div class="accordion bg-dark" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item bg-dark">
           <h2 class="accordion-header bg-dark">
-            <button style="color: white;" class="accordion-button bg-dark danger" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-              My favourites
-            </button>
+              <button style="color: white;" class="accordion-button bg-dark danger" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                  My favourites
+              </button>
           </h2>
           <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
-            <div class="accordion-body bg-dark"></div>
+              <div class="accordion-body bg-dark"></div>
           </div>
-        </div>
-        <div class="accordion-item">
+      </div>
+      <div class="accordion-item">
           <h2 class="accordion-header bg-dark">
-            <button style="color: white;" class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#leagueAccordion" aria-expanded="false" aria-controls="leagueAccordion">
-              <ion-icon name="football-outline"></ion-icon>&nbsp; &nbsp; Futboll
-            </button>
+              <button style="color: white;" class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#leagueAccordion" aria-expanded="false" aria-controls="leagueAccordion">
+                  <ion-icon name="football-outline"></ion-icon>&nbsp; &nbsp; Futboll
+              </button>
           </h2>
-        
           <div id="leagueAccordion" class="accordion-collapse collapse">
-            <div class="accordion-body bg-dark" style="color: antiquewhite;">
-              <% leagueData.forEach(function(league, index) { %>
-              <div class="accordion-item">
-                <h2 class="accordion-header bg-dark">
-                  <button style="color: white;" class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#<%= 'league-' + index + '-details' %>">
-                    <%= league.leaguename %>
-                  </button>
-                </h2>
-        
-                <div id="<%= 'league-' + index + '-details' %>" class="accordion-collapse collapse">
-                  <div class="accordion-body bg-dark" style="color: antiquewhite;">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>nr</th>
-                          <th>start datetime</th>
-                          <th>location</th>
-                          <th>hometeam</th>
-                          <th>away team</th>
-                          <th>price</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>02/05/2025</td>
-                          <td>Albania</td>
-                          <td>Vllaznia</td>
-                          <td>Partizani</td>
-                          <td>
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>1</th>
-                                  <th>X</th>
-                                  <th>2</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <!-- Add data rows for the price options -->
-                                <tr>
-                                  <td><span id="price-1-2-1" class="price-td">0.2</span></td>
-                                  <td><span id="price-1-2-X" class="price-td">1.6</span></td>
-                                  <td><span id="price-1-2-2" class="price-td">2.6</span></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>08/04/2025</td>
-                          <td>Internacional</td>
-                          <td>Real Madrid</td>
-                          <td>Barcelona</td>
-                          <td>
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>1</th>
-                                  <th>X</th>
-                                  <th>2</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <!-- Add data rows for the price options -->
-                                <tr>
-                                  <td><span id="price-2-2-1" class="price-td">2.8</span></td>
-                                 <td><span id="price-2-2-X" class="price-td">5.4</span></td>
-                                  <td><span id="price-2-2-2" class="price-td">1.0</span></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                      </tbody>
-                    
-                      <div id="pricePanel" class="price-panel">
-                        <p id="selectedPrice"></p>
-                        <form style="background-color: rgb(255, 0, 0); border-radius: 60px;">
-                          <label for="total">Total:</label>
-                          <input style="border-radius: 60px;" type="number" id="total" name="total" required>
+              <div class="accordion-body bg-dark" style="color: antiquewhite;">
+                  <% leagueData.forEach(function(league, index) { %>
+                  <div class="accordion-item">
+                      <h2 class="accordion-header bg-dark">
+                          <button style="color: white;" class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#<%= 'league-' + index + '-details' %>">
+                              <%= league.leaguename %>
+                          </button>
+                      </h2>
+
+                      <div id="<%= 'league-' + index + '-details' %>" class="accordion-collapse collapse">
+                          <div class="accordion-body bg-dark" style="color: antiquewhite;">
+                              <table>
+                                  <thead>
+                                      <tr>
+                                          <th>nr</th>
+                                          <th>start datetime</th>
+                                          <th>location</th>
+                                          <th>hometeam</th>
+                                          <th>away team</th>
+                                          <th>price</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>1</td>
+                                          <td>02/05/2025</td>
+                                          <td>Albania</td>
+                                          <td>Vllaznia</td>
+                                          <td>Partizani</td>
+                                          <td>
+                                              <table>
+                                                  <thead>
+                                                      <tr>
+                                                          <th>1</th>
+                                                          <th>X</th>
+                                                          <th>2</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr>
+                                                          <td><span id="price-1-2-1" class="price-td">0.2</span></td>
+                                                          <td><span id="price-1-2-X" class="price-td">1.6</span></td>
+                                                          <td><span id="price-1-2-2" class="price-td">2.6</span></td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>2</td>
+                                          <td>08/04/2025</td>
+                                          <td>Internacional</td>
+                                          <td>Real Madrid</td>
+                                          <td>Barcelona</td>
+                                          <td>
+                                              <table>
+                                                  <thead>
+                                                      <tr>
+                                                          <th>1</th>
+                                                          <th>X</th>
+                                                          <th>2</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr>
+                                                          <td><span id="price-2-2-1" class="price-td">1.3</span></td>
+                                                          <td><span id="price-2-2-X" class="price-td">2.5</span></td>
+                                                          <td><span id="price-2-2-2" class="price-td">3.2</span></td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                          </td>
+                                      </tr>
+                                      <!-- Add more rows as needed -->
+                                  </tbody>
+                             
+                              </table>
+                          </div>
                       
-                          <label for="name">Name:</label>
-                          <input style="border-radius: 60px;" type="text" id="name" name="name" placeholder="odds" readonly>
-                      
-                          <label for="price">Price:</label>
-                          <input style="border-radius: 60px;" type="text" id="price" name="price" readonly>
-                      
-                          <button style="border-radius: 60px;" type="submit">Submit</button>
-                        </form>
                       </div>
-                      
-                      <script>
-                        // Get all price elements
-                        const priceElements = document.querySelectorAll('.price-td');
-                      
-                        // Get the price panel
-                        const pricePanel = document.getElementById('pricePanel');
-                      
-                        // Array to store selected prices
-                        const selectedPrices = [];
-                      
-                        // Multiply all selected prices
-                        const multiplyPrices = () => {
-                          let result = 1;
-                          for (let price of selectedPrices) {
-                            result *= price;
-                          }
-                          return result.toFixed(2);
-                        };
-                      
-                        // Update the click event listener for each price element
-                        priceElements.forEach((element) => {
-                          element.addEventListener('click', () => {
-                            // Check if the price has already been selected
-                            if (element.classList.contains('selected')) {
-                              // Remove the price from the selectedPrices array
-                              const selectedPrice = parseFloat(element.textContent);
-                              const index = selectedPrices.indexOf(selectedPrice);
-                              if (index !== -1) {
-                                selectedPrices.splice(index, 1);
-                              }
-                      
-                              // Update the selected price display
-                              const selectedPriceDisplay = document.getElementById('selectedPrice');
-                              selectedPriceDisplay.textContent = selectedPrices.join(', ');
-                      
-                              // Update the price input field in the form
-                              const priceInput = document.getElementById('price');
-                              priceInput.value = multiplyPrices();
-                      
-                              // Remove the 'selected' class to indicate the price has been deselected
-                              element.classList.remove('selected');
-                            } else {
-                              // Get the selected price
-                              const selectedPrice = parseFloat(element.textContent);
-                      
-                              // Add the selected price to the array
-                              selectedPrices.push(selectedPrice);
-                      
-                              // Update the selected price display
-                              const selectedPriceDisplay = document.getElementById('selectedPrice');
-                              selectedPriceDisplay.textContent = selectedPrices.join(', ');
-                      
-                              // Update the price input field in the form
-                              const priceInput = document.getElementById('price');
-                              priceInput.value = multiplyPrices();
-                      
-                              // Add the 'selected' class to indicate the price has been selected
-                              element.classList.add('selected');
-                            }
-                      
-                            // Show the price panel
-                            pricePanel.classList.add('open');
-                      
-                            // Update the total input field with the count of selected prices
-                            const totalInput = document.getElementById('total');
-                            totalInput.value = selectedPrices.length;
-                          });
-                        });
-                      
-                        // Hide the price panel when the form is submitted
-                        const form = document.querySelector('form');
-                        form.addEventListener('submit', (event) => {
-                          event.preventDefault();
-                          // Your submission logic goes here
-                        });
-                      </script>
-                      
-                  
-                  
-                  
-                  
-                  
-                  
+                    
                   </div>
-                </div>
+                  <% }) %>
               </div>
-              <% }) %>
-            </div>
-      
           </div>
-        </div>
-       
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="color: white;" class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-            <ion-icon name="basketball-outline"></ion-icon> &nbsp; &nbsp;  Basketboll
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-          <div class="accordion-body bg-dark">
-
-             </div>
-        </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseFour">
-            <ion-icon name="tennisball-outline"></ion-icon>&nbsp; &nbsp;  Tenis
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse ">
-          <div class="accordion-body bg-dark">
-
-              </div>
-        </div>
-      </div>
-      
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="color: white;"class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">
-            <ion-icon name="american-football-outline"></ion-icon> &nbsp; &nbsp;  Handboll
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse ">
-          <div class="accordion-body bg-dark">
-
-             </div>
-        </div>
+          <h2 class="accordion-header">
+              <button style="color: white;" class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                  <ion-icon name="basketball-outline"></ion-icon> &nbsp; &nbsp; Basketboll
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+              <div class="accordion-body bg-dark"></div>
+          </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="color: white;"class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="true" aria-controls="panelsStayOpen-collapseSix">
-            <ion-icon name="baseball-outline"></ion-icon>&nbsp; &nbsp;   Baseball
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse ">
-          <div class="accordion-body bg-dark">
-
-             </div>
-        </div>
+          <h2 class="accordion-header">
+              <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseFour">
+                  <ion-icon name="tennisball-outline"></ion-icon>&nbsp; &nbsp; Tenis
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse ">
+              <div class="accordion-body bg-dark"></div>
+          </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="true" aria-controls="panelsStayOpen-collapseSeven">
-            <ion-icon name="football-outline"></ion-icon> &nbsp; &nbsp;  Volejboll
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse ">
-          <div class="accordion-body bg-dark">
-
-           </div>
-        </div>
+          <h2 class="accordion-header">
+              <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">
+                  <ion-icon name="american-football-outline"></ion-icon> &nbsp; &nbsp; Handboll
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse ">
+              <div class="accordion-body bg-dark"></div>
+          </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header bg-dark">
-          <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="true" aria-controls="panelsStayOpen-collapseEight">
-            <ion-icon name="tennisball-outline"></ion-icon> &nbsp; &nbsp;  Ice hokey
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse ">
-          <div class="accordion-body bg-dark">
-
-           </div>
-        </div>
+          <h2 class="accordion-header">
+              <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="true" aria-controls="panelsStayOpen-collapseSix">
+                  <ion-icon name="baseball-outline"></ion-icon>&nbsp; &nbsp; Baseball
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse ">
+              <div class="accordion-body bg-dark"></div>
+          </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="true" aria-controls="panelsStayOpen-collapseNine">
-            <ion-icon name="bowling-ball-outline"></ion-icon>&nbsp; &nbsp; Cricket
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse ">
-          <div class="accordion-body bg-dark">
-
-            </div>
-        </div>
+          <h2 class="accordion-header bg-dark">
+              <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="true" aria-controls="panelsStayOpen-collapseSeven">
+                  <ion-icon name="football-outline"></ion-icon> &nbsp; &nbsp; Volejboll
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse ">
+              <div class="accordion-body bg-dark"></div>
+          </div>
       </div>
-    </div>
- 
+      <div class="accordion-item">
+          <h2 class="accordion-header bg-dark">
+              <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="true" aria-controls="panelsStayOpen-collapseEight">
+                  <ion-icon name="tennisball-outline"></ion-icon> &nbsp; &nbsp; Ice hokey
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse ">
+              <div class="accordion-body bg-dark"></div>
+          </div>
+      </div>
+      <div class="accordion-item">
+          <h2 class="accordion-header">
+              <button style="color: white;" class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="true" aria-controls="panelsStayOpen-collapseNine">
+                  <ion-icon name="bowling-ball-outline"></ion-icon>&nbsp; &nbsp; Cricket
+              </button>
+          </h2>
+          <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse ">
+              <div class="accordion-body bg-dark"></div>
+          </div>
+      </div>
+  </div>
+  <div id="pricePanel" class="price-panel">
+      <p id="selectedPrice"></p>
+      <form action="/betting/betting" method="post" style="background-color: rgb(255, 0, 0); border-radius: 60px;">
+          <label for="total">Total:</label>
+          <input style="border-radius: 60px;" type="number" id="total" name="total" readonly>
+  
+          <label for="name">Name:</label>
+          <input style="border-radius: 60px;" type="text" id="name" name="name" placeholder="odds" readonly>
+  
+          <label for="price">Price:</label>
+          <input style="border-radius: 60px;" type="text" id="price" name="price" readonly>
+  
+          <button style="border-radius: 60px;" type="submit" name="submit">Submit</button>
+      </form>
+  </div>
+  
+  <script>
+    // Get all price elements
+    const priceElements = document.querySelectorAll('.price-td');
+
+    // Get the price panel
+    const pricePanel = document.getElementById('pricePanel');
+
+    // Array to store selected prices and related data
+    const selectedData = [];
+
+    // Multiply all selected prices
+    const multiplyPrices = () => {
+        let result = 1;
+        for (let data of selectedData) {
+            result *= data.price;
+        }
+        return result.toFixed(2);
+    };
+
+    // Update the click event listener for each price element
+    priceElements.forEach((element) => {
+        element.addEventListener('click', () => {
+            // Check if the price has already been selected
+            if (element.classList.contains('selected')) {
+                // Remove the price from the selectedData array
+                const selectedPrice = parseFloat(element.textContent);
+                const index = selectedData.findIndex((data) => data.price === selectedPrice);
+                if (index > -1) {
+                    selectedData.splice(index, 1);
+                }
+                // Update the total price in the price panel
+                document.getElementById('price').value = multiplyPrices();
+                // Remove the selected class from the price element
+                element.classList.remove('selected');
+            } else {
+                // Get the selected data
+                const hometeam = element.dataset.hometeam;
+                const awayteam = element.dataset.awayteam;
+                const price = parseFloat(element.textContent);
+                console.log(hometeam, awayteam, price);
+                // Create an object with the selected data
+                const selectedDataItem = { hometeam, awayteam, price };
+                // Add the selected data to the selectedData array
+                selectedData.push(selectedDataItem);
+                // Update the total price in the price panel
+                document.getElementById('price').value = multiplyPrices();
+                // Add the selected class to the price element
+                element.classList.add('selected');
+            }
+            // Update the selected data in the name field of the price panel
+            document.getElementById('name').value = JSON.stringify(selectedData);
+
+            // Update the market label with the selected table heads
+            const marketLabel = document.getElementById('selectedPrice');
+            const tableHeads = selectedData.map(() => ['1', 'X', '2']);
+            marketLabel.textContent = tableHeads.flat().join(' | ');
+        });
+    });
+
+    // Handle form submission
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const total = document.getElementById('total').value;
+        const name = document.getElementById('name').value;
+        const price = document.getElementById('price').value;
+
+        // Send the data to the backend
+    });
+</script>
+  
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script src="/javascript/js.js"></script>
-        <!-- <div id="pricePanel" class="price-panel ">
-          <p id="selectedPrice"></p>
         
-          <form >
-            <label for="total">Total:</label>
-            <input type="number" id="total" name="total" required>
-        
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        
-            <label for="price">Price:</label>
-            <input type="text" id="price" name="price" readonly>
-        
-            <button type="submit">Submit</button>
-          </form>
-        </div> -->
-        <!-- <script>
-          // Get all price elements
-          const priceElements = document.querySelectorAll('.price-td');
       
-          // Get the price panel
-          const pricePanel = document.getElementById('pricePanel');
-      
-          // Add click event listener to each price element
-          priceElements.forEach((element) => {
-            element.addEventListener('click', () => {
-              // Get the selected price
-              const selectedPrice = element.textContent;
-      
-              // Update the selected price display
-              const selectedPriceDisplay = document.getElementById('selectedPrice');
-              selectedPriceDisplay.textContent = selectedPrice;
-      
-              // Update the price input field in the form
-              const priceInput = document.getElementById('price');
-              priceInput.value = selectedPrice;
-      
-              // Show the price panel
-              pricePanel.classList.add('open');
-            });
-          });
-      
-          // Hide the price panel when the form is submitted
-          const form = document.querySelector('form');
-          form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            pricePanel.classList.remove('open');
-          });
-        </script> -->
 </body>
 </html>

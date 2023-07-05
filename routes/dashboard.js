@@ -62,6 +62,33 @@ router.get('/dashboard', async (req, res, next) => {
     });
   }
 });
+router.post('/betting/', (req, res) => {
+  // Extract the data from the request body
+  const { total, name, price } = req.body;
+
+  // Parse the selected data from the name field
+  const selectedData = JSON.parse(name);
+
+  // Create an array to store the bet objects
+  const bets = [];
+
+  // Create a new bet object for each selected data item
+  for (let data of selectedData) {
+    const { hometeam, awayteam, price } = data;
+    const bet = { hometeam, awayteam, price };
+    bets.push(bet);
+  }
+
+  // Insert the bet data into the MySQL database
+  db.query('INSERT INTO bet.bets (hometeam, awayteam, price) VALUES ?', [bets.map(bet => [bet.hometeam, bet.awayteam, bet.price])], (error, results) => {
+    if (error) {
+      console.error('Error inserting bet:', error);
+      res.status(500).json({ error: 'An error occurred while saving the bet.' });
+    } else {
+      res.status(200).json({ message: 'Bet saved successfully.' });
+    }
+  });
+});
 
 
 
