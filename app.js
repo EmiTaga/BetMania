@@ -23,8 +23,8 @@ let bookmarkRouter = require('./routes/bookmark');
 let prematchRouter = require('./routes/prematch');
 let rabbitmqRouter = require('./routes/rabbitmq')
 let resetRouter = require('./routes/reset');
-let todayRouter = require('./routes/today')
-let bettingRouter = require('./routes/betting')
+let todayRouter = require('./routes/today');
+let bettingRouter = require('./routes/betting');
 let app = express();
 app.use(express.static('public'));
 app.get('/', (req, res, next) => {

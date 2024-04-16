@@ -1,0 +1,144 @@
+.small-modal {
+    max-width: 300px; /* Set the maximum width */
+    margin-left: 10px; /* Adjust the left margin as needed */
+  }
+
+  .modal-dialog {
+    margin: 0;
+  }
+    li {
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+      border: 2px;
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 5px;
+    }
+
+    .second {
+      font-size: 21px;
+      margin-top: 0px;
+      padding-top: -10px;
+    }
+
+    button {
+      color: white;
+    }
+
+    .custom-accordion-icon {
+      fill: rgb(82, 2, 2) !important;
+    }
+
+    body {
+      background-color: #212529;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid rgb(255, 0, 0);
+    }
+
+    .price-td {
+      cursor: pointer;
+    }
+
+    .price-panel {
+  position: fixed;
+  top: 400px;
+  right: 0px;
+  left: 1px;
+  bottom: 0;
+  width: 150px;
+  height: 160px;
+  background-color: rgba(131, 126, 126, 0.3);
+  padding: 10px;
+  z-index: 999;
+  transition: transform 0.3s ease;
+  border-radius: 13px;
+}
+
+.price-panel.open {
+  transform: translateX(+60%);
+  border-radius: 60px;
+}
+
+.price-td.selected {
+  background-color: rgb(216, 216, 171);
+  width: 10px;
+}
+
+form {
+  background-color: transparent;
+  border-radius: 60px;
+}
+
+/* Additional Styles */
+
+form label {
+  color: white;
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input[type="text"] {
+  border-radius: 60px;
+  padding: 5px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+}
+
+form button {
+  border-radius: 60px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+form button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(255, 0, 0);
+}
+
+
+footer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgb(10, 45, 30);
+  width: 100%;
+  padding-top: 100px;
+}
+footer h6{
+  font-size: 14px;
+  padding-bottom: 20px;
+  color: aquamarine;
+  
+}
+footer a{
+  font-size: 13px;
+  text-decoration: none;
+  color: rgb(199, 186, 186);
+  margin-bottom: 10px;
+  
+  
+}
+footer .col{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-bottom: 10px;   
+}

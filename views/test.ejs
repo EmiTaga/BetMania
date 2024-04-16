@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Your existing HTML structure with modifications for price selection -->
+<div class="accordion-body bg-dark" style="color: antiquewhite">
+    <% leagueData.forEach(function(league, index) { %>
+      <div class="accordion-item">
+        <h2 class="accordion-header bg-dark">
+          <button style="color: white" class="accordion-button collapsed bg-dark" type="button"
+            data-bs-toggle="collapse" data-bs-target="#<%= 'league-' + index + '-details' %>">
+            <%= league.leaguename %>
+          </button>
+        </h2>
+  
+        <div id="<%= 'league-' + index + '-details' %>" class="accordion-collapse collapse">
+          <div class="accordion-body bg-dark" style="color: antiquewhite">
+            <table>
+              <thead>
+                <tr>
+                    <th>nr</th>
+                    <th>start datetime</th>
+                    <th>location</th>
+                    <th>hometeam</th>
+                    <th>away team</th>
+                    <th>price</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% matchData.forEach(function(match) { %>
+                  <% if (match.tournament_id === league.id) { %>
+                    <tr>
+                        <td>
+                            <%= match.nr %>
+                          </td>
+                          <td>
+                            <%= match.start_datetime %>
+                          </td>
+                          <td>
+                            <%= match.location %>
+                          </td>
+                          <td>
+                            <%= match.team1_name %>
+                          </td>
+                          <td>
+                            <%= match.team2_name %>
+                          </td>
+                      <td>
+                        <button class="price-td" data-hometeam="<%= match.team1_name %>"
+                          data-awayteam="<%= match.team2_name %>"
+                          data-matchid="<%= match.id %>"
+                          data-price="<%= match.price_1 %>">
+                          <%= match.price_1 || 'N/A' %>
+                        </button>
+                        <!-- ... -->
+                      </td>
+                    </tr>
+                    <!-- ... -->
+                    <div class="price-panel">
+                      <p id="selectedPrice"></p>
+                      <form id="betForm" action="/dashboard/dashboard" method="post"
+                        style="background-color: rgb(255, 0, 0); border-radius: 60px;">
+                        <label for="selectedPrice">Price:</label>
+                        <p id="selectedPrice" style="border-radius: 60px"></p>
+                        <input type="hidden" id="name" name="name" />
+                        <!-- Update the input fields with correct data -->
+                        <input type="hidden" id="hometeam" name="hometeam" />
+                        <input type="hidden" id="awayteam" name="awayteam" />
+                        <input type="hidden" id="matchid" name="matchid" />
+                        <button style="border-radius: 60px" type="submit" name="submit">Submit</button>
+                      </form>
+                    </div>
+                  <% } %>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+  
+  <!-- JavaScript section at the end of the HTML file -->
+  <script>
+    // JavaScript code as provided earlier for selecting prices and form submission
+  </script>
+  
+</body>
+</html>
