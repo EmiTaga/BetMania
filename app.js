@@ -34,7 +34,7 @@ app.get('/', (req, res, next) => {
   next(); // continue with the next middleware in the stack
 });
 // view engine setup
-app.listen(8085, () => {
+app.listen(8088, () => {
   console.log('Server started on port 8085');
 })
 app.set('views', path.join(__dirname, 'views'));

@@ -33,14 +33,17 @@
     background-color: #fa5b5b;
     border: 1px solid #ff0000;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    max-width: 300px; /* Adjust as needed */
+    box-shadow: 0 6px 8px rgba(8, 8, 8, 0.1);
+    padding: 20px;
+    width: 90px; /* Adjust as needed */
     opacity: 0; /* Hidden by default */
     transition: opacity 0.3s ease-in-out; /* Smooth transition */
     z-index: 1001; /* Ensure it's on top of the overlay */
+    height: 150px; /* Adjust height as needed */
+    font-size: 16px
+   
   }
-
+ 
   /* Show the selected prices container when the overlay is active */
   .overlay.active + .selected-prices-container {
     opacity: 1;
