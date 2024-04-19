@@ -41,6 +41,7 @@
     z-index: 1001; /* Ensure it's on top of the overlay */
     height: 150px; /* Adjust height as needed */
     font-size: 16px
+
    
   }
  
@@ -356,23 +357,63 @@
   </div>
   </div>
   <script>
-    let total = 0; // Variable to keep track of the total price
+//     let total = 0; // Variable to keep track of the total price
 
-// Function to handle click event on match prices
+// // Function to handle click event on match prices
+// function addPriceToSelection(price) {
+//   const parsedPrice = parseFloat(price); // Convert the price to a number
+//   if (!isNaN(parsedPrice)) { // Check if the parsed price is a valid number
+//     total = total === 0 ? parsedPrice : total * parsedPrice; // Multiply the total by the new price or set it to the new price if total is 0
+//   }
+
+//   // Update the selectedPricesContainer with the total price
+//   const container = document.getElementById('selectedPricesContainer');
+//   container.innerHTML = `<div id="selectedPricesHeader">Total Price</div><div>${total.toFixed(2)}</div>`;
+
+//   // Show the overlay and selected prices container
+//   const overlay = document.getElementById('overlay');
+//   overlay.classList.add('active');
+// }
+let selectedPrice = null; // Variable to store the selected price
+
 function addPriceToSelection(price) {
-  const parsedPrice = parseFloat(price); // Convert the price to a number
-  if (!isNaN(parsedPrice)) { // Check if the parsed price is a valid number
-    total = total === 0 ? parsedPrice : total * parsedPrice; // Multiply the total by the new price or set it to the new price if total is 0
+  if (selectedPrice === null) { // Check if a price is not already selected
+    const parsedPrice = parseFloat(price); // Convert the price to a number
+    if (!isNaN(parsedPrice)) { // Check if the parsed price is a valid number
+      selectedPrice = parsedPrice; // Set the selected price
+    }
+
+    // Display a confirmation dialog with the selected price and prompt the user for confirmation
+    const confirmation = confirm('Price selected: ' + selectedPrice.toFixed(2) + '. Do you want to proceed with this price?');
+
+    // If user confirms, update the selectedPricesContainer with the selected price and proceed
+    if (confirmation) {
+      // Update the selectedPricesContainer with the selected price
+      const container = document.getElementById('selectedPricesContainer');
+      container.innerHTML = `<div id="selectedPricesHeader">Total Price</div><div>${selectedPrice.toFixed(2)}</div>`;
+
+      // Show the overlay and selected prices container
+      const overlay = document.getElementById('overlay');
+      overlay.classList.add('active');
+
+      // Display alert notification
+      alert('Price selected: ' + selectedPrice.toFixed(2));
+    } else {
+      // Reset selectedPrice to allow selecting another price
+      selectedPrice = null;
+    }
+  } else { // If a price is already selected
+    // Prompt the user to confirm changing the selected price
+    const confirmation = confirm('You have already selected a price: ' + selectedPrice.toFixed(2) + '. Do you want to change it?');
+
+    // If user confirms, reset the selectedPrice to allow selecting another price
+    if (confirmation) {
+      selectedPrice = null;
+    }
   }
-
-  // Update the selectedPricesContainer with the total price
-  const container = document.getElementById('selectedPricesContainer');
-  container.innerHTML = `<div id="selectedPricesHeader">Total Price</div><div>${total.toFixed(2)}</div>`;
-
-  // Show the overlay and selected prices container
-  const overlay = document.getElementById('overlay');
-  overlay.classList.add('active');
 }
+
+
 
   </script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
